@@ -3,8 +3,10 @@ from abc import ABC, abstractmethod
 import torch
 import torch.nn as nn
 
+from internnav import PROJECT_ROOT_PATH
+
 LatentEmbSize = 768
-MODEL_PATH_TO = "checkpoints"
+MODEL_PATH_TO = f"{PROJECT_ROOT_PATH}/checkpoints"
 
 
 def build_navdp(navdp_cfg, memory_size):

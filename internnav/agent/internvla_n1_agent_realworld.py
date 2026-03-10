@@ -27,7 +27,7 @@ class InternVLAN1AsyncAgent:
     def __init__(self, args):
         self.device = torch.device(args.device)
         self.save_dir = "test_data/" + datetime.now().strftime("%Y%m%d_%H%M%S")
-        print(f"args.model_path{args.model_path}")
+        print(f"args.model_path {args.model_path}")
         self.model = InternVLAN1ForCausalLM.from_pretrained(
             args.model_path,
             torch_dtype=torch.bfloat16,

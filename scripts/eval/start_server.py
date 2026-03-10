@@ -30,17 +30,20 @@ if __name__ == '__main__':
     parser.add_argument(
         '--config',
         type=str,
-        default=None,
+        default="scripts/eval/configs/h1_internvla_n1_async_cfg.py",
         help='eval config file path, e.g. scripts/eval/configs/h1_cma_cfg.py',
     )
-    parser.add_argument('--port', type=int, default=8087)
+    parser.add_argument('--port', type=int, default=None)
     parser.add_argument('--reload', action='store_true')
     args = parser.parse_args()
     if args.config:
         eval_cfg = load_eval_cfg(args.config)
-        args.port = eval_cfg.agent.server_port
+        if args.port is None:  # only use config port when --port is not explicitly specified
+            args.port = eval_cfg.agent.server_port
     else:
         print(f"Warning: No config file provided, using port {args.port}")
+    if args.port is None:
+        args.port = 8087  # fallback default
 
     server = AgentServer(args.host, args.port)
     server.run()
