@@ -153,3 +153,5 @@ internnav/model/basemodel/LongCLIP/
 .gradio/
 result/
 test_data/
+realworld_sample_data1/
+realworld_sample_data2/
