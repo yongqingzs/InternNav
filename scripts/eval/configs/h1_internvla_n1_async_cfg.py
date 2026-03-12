@@ -27,7 +27,7 @@ eval_cfg = EvalCfg(
             'num_frames': 32,
             'num_history': 8,
             'num_future_steps': 4,
-            'device': 'cuda:0',
+            'device': 'cuda:1',  # GPU 1 for model server; GPU 0 left for Isaac Sim
             'predict_step_nums': 32,
             'continuous_traj': True,
             'infer_mode': 'partial_async',  # You can choose "sync" or "partial_async", but for this model, "partial_async" is better.
@@ -77,6 +77,6 @@ eval_cfg = EvalCfg(
     eval_settings={
         'save_to_json': True,
         'vis_output': True,
-        'use_agent_server': False,  # If use_agent_server=True, please start the agent server first.
+        'use_agent_server': True,  # Model runs on Agent Server (GPU 1); Isaac Sim uses GPU 0.
     },
 )

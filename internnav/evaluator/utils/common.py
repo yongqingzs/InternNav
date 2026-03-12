@@ -260,7 +260,7 @@ def draw_trajectory(array, obs_lst, reference_path):
     ax.axis("off")
     fig.tight_layout(pad=0)
     canvas.draw()
-    img = np.frombuffer(canvas.tostring_rgb(), dtype="uint8")
+    img = np.asarray(canvas.buffer_rgba())[:, :, :3]
     img = img.reshape(canvas.get_width_height()[::-1] + (3,))
     plt.close(fig)
     return img
